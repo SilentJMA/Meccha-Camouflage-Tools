@@ -328,9 +328,9 @@ class Menu(QWidget):
         "surface3":  "#252a37",
         "border":    "#2b3140",
         "border2":   "#353c4f",
-        "text":      "#d7dbe6",
-        "text_dim":  "#8b93a7",
-        "text_faint":"#5b6275",
+        "text":      "#e4e8f1",
+        "text_dim":  "#aeb6c9",
+        "text_faint":"#7f899e",
         "accent":    "#5b8cff",
         "accent_d":  "#3f6fe0",
         "accent2":   "#9d7bff",
@@ -347,18 +347,18 @@ class Menu(QWidget):
             border: 1px solid #2b3140;
             border-radius: 14px;
         }
-        QLabel { color: #d7dbe6; font-size: 11px; background: transparent; }
+        QLabel { color: #e4e8f1; font-size: 10pt; background: transparent; }
         QLabel#titleLbl {
-            font-size: 16px; font-weight: bold; color: #aeb9ff;
+            font-size: 14pt; font-weight: 600; color: #bec7ff;
             padding: 2px 0; letter-spacing: 2px;
             background: transparent;
         }
         QCheckBox {
-            color: #c5cad8; font-size: 11px; spacing: 9px; padding: 3px 2px;
+            color: #dce1ec; font-size: 10pt; spacing: 9px; padding: 4px 2px;
             background: transparent;
         }
         QCheckBox::indicator {
-            width: 16px; height: 16px; border-radius: 4px;
+            width: 18px; height: 18px; border-radius: 4px;
             border: 1px solid #3a4253; background: #14171f;
         }
         QCheckBox::indicator:hover { border-color: #5b8cff; }
@@ -370,7 +370,7 @@ class Menu(QWidget):
         QComboBox {
             background-color: #1d212c; color: #d7dbe6;
             border: 1px solid #2b3140; padding: 5px 10px; border-radius: 6px;
-            font-size: 11px; min-height: 24px;
+            font-size: 10pt; min-height: 28px;
         }
         QComboBox:hover { border-color: #4a5470; }
         QComboBox::drop-down {
@@ -383,12 +383,12 @@ class Menu(QWidget):
             background-color: #1d212c; color: #d7dbe6;
             border: 1px solid #353c4f; border-radius: 6px;
             selection-background-color: #2f3a5a; selection-color: #fff;
-            outline: none; font-size: 11px; padding: 4px;
+            outline: none; font-size: 10pt; padding: 5px;
         }
         QPushButton {
             background-color: #222737; color: #d7dbe6;
             border: 1px solid #2b3140; padding: 7px 12px; border-radius: 7px;
-            font-size: 11px;
+            font-size: 10pt;
         }
         QPushButton:hover { background-color: #2c3349; border-color: #4a5470; }
         QPushButton:pressed { background-color: #353d57; }
@@ -406,7 +406,7 @@ class Menu(QWidget):
         QSpinBox, QDoubleSpinBox {
             background-color: #14171f; color: #d7dbe6;
             border: 1px solid #2b3140; padding: 3px 8px; border-radius: 6px;
-            font-size: 11px; min-height: 24px;
+            font-size: 10pt; min-height: 28px;
         }
         QSpinBox:focus, QDoubleSpinBox:focus { border-color: #5b8cff; }
         QSpinBox::up-button, QDoubleSpinBox::up-button,
@@ -460,8 +460,8 @@ class Menu(QWidget):
         self._outer_layout = QVBoxLayout(self)
         self._outer_layout.setContentsMargins(0, 0, 0, 0)
         self._build_ui()
-        self.resize(660, 760)
-        self.setMinimumSize(560, 620)
+        self.resize(780, 840)
+        self.setMinimumSize(680, 700)
         QTimer.singleShot(1500, self._check_updates)
 
     def _close_app(self):
@@ -472,13 +472,13 @@ class Menu(QWidget):
         if highlight:
             self.update_btn.setStyleSheet(
                 "QPushButton { background: #3f6fe0; color: #fff; border: 1px solid #6d9bff;"
-                " border-radius: 6px; font-size: 10px; padding: 3px 10px; }"
+                " border-radius: 6px; font-size: 8.5pt; padding: 3px 10px; }"
                 " QPushButton:hover { background: #5b8cff; }"
             )
         else:
             self.update_btn.setStyleSheet(
                 "QPushButton { background: #1d212c; color: #8b93a7; border: 1px solid #2b3140;"
-                " border-radius: 6px; font-size: 10px; padding: 3px 10px; }"
+                " border-radius: 6px; font-size: 8.5pt; padding: 3px 10px; }"
                 " QPushButton:hover { border-color: #4a5470; color: #d7dbe6; }"
             )
 
@@ -647,7 +647,7 @@ class Menu(QWidget):
         header = QHBoxLayout()
         header.setSpacing(10)
         logo = QLabel("\u25c8")  # ◈ diamond bullet
-        logo.setStyleSheet("color: #5b8cff; font-size: 18px;")
+        logo.setStyleSheet("color: #6f9cff; font-size: 16pt;")
         title = QLabel(_tr("MECCA CHAMELEON TOOLS"))
         title.setObjectName("titleLbl")
         header.addWidget(logo)
@@ -669,7 +669,7 @@ class Menu(QWidget):
         outer.addLayout(header)
 
         sub = QLabel(_tr("External ESP & camouflage overlay"))
-        sub.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 10px; padding: 0 2px;")
+        sub.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 9pt; padding: 0 2px;")
         outer.addWidget(sub)
 
         line = QFrame()
@@ -682,7 +682,8 @@ class Menu(QWidget):
         body.setSpacing(10)
 
         self.tab_list = QListWidget()
-        self.tab_list.setFixedWidth(124)
+        self.tab_list.setFixedWidth(166)
+        self.tab_list.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.tab_list.setFocusPolicy(Qt.NoFocus)
         self.tab_list.setStyleSheet(f"""
             QListWidget {{
@@ -691,7 +692,7 @@ class Menu(QWidget):
             }}
             QListWidget::item {{
                 color: {self.C['text_dim']}; padding: 9px 8px; border-radius: 7px;
-                font-size: 11px; font-weight: bold;
+                font-size: 11pt; font-weight: 600;
             }}
             QListWidget::item:selected {{
                 background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
@@ -746,7 +747,7 @@ class Menu(QWidget):
         self.btn_close.clicked.connect(self._close_app)
 
         hint = QLabel(_tr("Ins/F1 toggle \u2022 Drag to move \u2022 END = Exit"))
-        hint.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 9px;")
+        hint.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 8.5pt;")
         bar.addWidget(self.btn_save)
         bar.addWidget(self.btn_load)
         bar.addWidget(self.btn_close)
@@ -757,16 +758,16 @@ class Menu(QWidget):
         # ---- Footer (links + update) ------------------------------------
         footer = QHBoxLayout()
         footer.setSpacing(8)
-        github_link = QLabel('<a href="https://github.com/SilentJMA/Meccha-Chameleon-Tools" style="color: #8ab4f8; text-decoration: none; font-size: 9px;">GitHub</a>')
+        github_link = QLabel('<a href="https://github.com/SilentJMA/Meccha-Chameleon-Tools" style="color: #8ab4f8; text-decoration: none; font-size: 8.5pt;">GitHub</a>')
         github_link.setOpenExternalLinks(True)
         release_label = QLabel("v" + updater.APP_VERSION)
-        release_label.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 9px;")
+        release_label.setStyleSheet(f"color: {self.C['text_faint']}; font-size: 8.5pt;")
         self.update_btn = QPushButton(_tr("Check for Updates"))
         self.update_btn.setCursor(Qt.PointingHandCursor)
         self.update_btn.setFixedHeight(22)
         self.update_btn.clicked.connect(self._on_update_button_clicked)
         self._style_update_button()
-        copyright_link = QLabel('<a href="https://github.com/SilentJMA" style="color: #8b93a7; text-decoration: none; font-size: 9px;">\u00a9 2026 SilentJMA</a>')
+        copyright_link = QLabel('<a href="https://github.com/SilentJMA" style="color: #aeb6c9; text-decoration: none; font-size: 8.5pt;">\u00a9 2026 SilentJMA</a>')
         copyright_link.setOpenExternalLinks(True)
         footer.addWidget(github_link)
         footer.addStretch()
@@ -810,7 +811,7 @@ class Menu(QWidget):
     def _section_header(self, text, color=None):
         lbl = QLabel(text)
         lbl.setStyleSheet(
-            f"font-size: 11px; font-weight: bold; letter-spacing: 1px; "
+            f"font-size: 10pt; font-weight: 600; letter-spacing: 1px; "
             f"color: {color or self.C['accent']}; padding: 2px 0;"
         )
         return lbl
@@ -832,7 +833,7 @@ class Menu(QWidget):
         row.setSpacing(8)
         lbl = QLabel(label)
         if label_color:
-            lbl.setStyleSheet(f"color: {label_color}; font-size: 11px;")
+            lbl.setStyleSheet(f"color: {label_color}; font-size: 10pt;")
         row.addWidget(lbl)
         row.addStretch(1)
         row.addWidget(widget)
@@ -866,7 +867,7 @@ class Menu(QWidget):
 
         # Master switch
         self.cb_enabled = self._chk(_tr("ESP Enabled"), "enabled")
-        self.cb_enabled.setStyleSheet("font-size: 12px; font-weight: bold; color: #aeb9ff;")
+        self.cb_enabled.setStyleSheet("font-size: 11pt; font-weight: 600; color: #bec7ff;")
         lo.addWidget(self.cb_enabled)
 
         # Display modes
@@ -1061,7 +1062,7 @@ class Menu(QWidget):
 
         notice = QLabel(_tr("\u26a0 Host Only - These features only work when you are the game host"))
         notice.setStyleSheet(
-            f"color: {self.C['warn']}; font-size: 10px; font-weight: bold; "
+            f"color: {self.C['warn']}; font-size: 9pt; font-weight: 600; "
             f"background-color: #2a2418; padding: 6px 8px; border-radius: 6px; "
             f"border: 1px solid {self.C['border']};"
         )
@@ -1092,7 +1093,7 @@ class Menu(QWidget):
         self.btn_record_tp = tkr_btn
         clo.addLayout(tkr)
         info = QLabel(_tr("Hold the key above to teleport nearest item to you.\nSet speed/jump mult and enable Player Mod to apply."))
-        info.setStyleSheet(f"color: {self.C['text_dim']}; font-size: 10px;")
+        info.setStyleSheet(f"color: {self.C['text_dim']}; font-size: 9pt;")
         info.setWordWrap(True)
         clo.addWidget(info)
         lo.addWidget(card)
@@ -1106,20 +1107,20 @@ class Menu(QWidget):
         lo.setSpacing(10)
 
         hdr = QLabel(_tr("CAMOUFLAGE"))
-        hdr.setStyleSheet(f"font-size: 14px; font-weight: bold; color: {self.C['accent2']};")
+        hdr.setStyleSheet(f"font-size: 12pt; font-weight: 600; color: {self.C['accent2']};")
         lo.addWidget(hdr)
 
         self.lbl_camo_status = QLabel("Ready")
         self.lbl_camo_status.setWordWrap(True)
         self.lbl_camo_status.setStyleSheet(
-            f"color: {self.C['accent2']}; font-size: 11px; font-weight: bold; "
+            f"color: {self.C['accent2']}; font-size: 10pt; font-weight: 600; "
             f"background-color: {self.C['surface']}; padding: 8px 10px; "
             f"border-radius: 8px; border: 1px solid {self.C['border']};"
         )
         lo.addWidget(self.lbl_camo_status)
 
         self.lbl_bridge_status = QLabel("Bridge: checking...")
-        self.lbl_bridge_status.setStyleSheet(f"color: {self.C['text_dim']}; font-size: 10px;")
+        self.lbl_bridge_status.setStyleSheet(f"color: {self.C['text_dim']}; font-size: 9pt;")
         lo.addWidget(self.lbl_bridge_status)
 
         card, clo = self._card(spacing=8)
@@ -1133,7 +1134,7 @@ class Menu(QWidget):
             btn.setStyleSheet(
                 f"QPushButton {{ background-color: {self.C['surface2']}; color: {color}; "
                 f"border: 1px solid {self.C['border2']}; padding: 9px; border-radius: 8px; "
-                f"font-size: 11px; font-weight: bold; }}"
+                f"font-size: 10pt; font-weight: 600; }}"
                 f" QPushButton:hover {{ background-color: {self.C['surface3']}; border-color: {color}; }}"
             )
             btn.clicked.connect(cmd)
@@ -1159,10 +1160,10 @@ class Menu(QWidget):
     def _set_bridge_status(self, alive):
         if alive:
             self.lbl_bridge_status.setText("Bridge: Connected")
-            self.lbl_bridge_status.setStyleSheet("color: #8f8; font-size: 10px;")
+            self.lbl_bridge_status.setStyleSheet("color: #8f8; font-size: 9pt;")
         else:
             self.lbl_bridge_status.setText("Bridge: Disconnected")
-            self.lbl_bridge_status.setStyleSheet("color: #f88; font-size: 10px;")
+            self.lbl_bridge_status.setStyleSheet("color: #f88; font-size: 9pt;")
 
     def _on_paint_now(self):
         self.lbl_camo_status.setText("Painting...")
